@@ -15,5 +15,6 @@ Function.prototype.newBind = function (...args) {
     }
 }
 
+
 let func = abc.newBind()
 func(name,"4","c","d")

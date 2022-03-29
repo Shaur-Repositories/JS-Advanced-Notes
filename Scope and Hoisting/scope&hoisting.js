@@ -11,6 +11,7 @@ if (true) {
     const c = 3; //block
 }
 
+
 //functional scope
 function abc(num1, num2) {
     var a = 1;   //local
