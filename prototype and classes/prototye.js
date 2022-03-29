@@ -41,12 +41,11 @@ var personobj2 = {
     age : 22
 }
 
-Object.setPrototypeOf(personobj2, personobj1)
+Object.setPrototypeOf(personobj2, personobj1) // set personobj2 __proto__ points  to perosnobj1 to access its properties 
 console.log(personobj2.name);
-console.log(personobj2.__proto__);
+console.log(personobj2.__proto__); //personobj1
 console.log(personobj1.prototype);  //undefined
 console.log(personobj1.prototype); //undefined
-
 
 console.log("litralObj __proto__", personobj1.__proto__); // refer to Object.protoype
 console.log("litralObj prototype", personobj1.prototype); //undefined 
@@ -63,10 +62,10 @@ console.log("Child function Prototype", Person1.prototype);
 
 console.log("---------------Prototype Intermediate Example------------------");
 
-function Animal() { }
+function Animal() { this.heart = 1; } // heart property given in consturctor function of animal
 Animal.prototype = {  // to add multiple properties at once;
 
-    constructor: Animal,  // its important as by reassigning the prototype removes the constructor value.
+    constructor: Animal,  // its important as by reassigning the prototype removes the constructor value. and set it to Object
     walk: function () {
         console.log(this.name, "can walk");
     },
@@ -86,9 +85,12 @@ Birds.prototype.feather = function () { // function on Birds prototype.
 };
 
 let duck = new Birds("Duck");
+console.log(duck.name); // Birds constructor property
 duck.walk(); //from Animal;
 duck.eat();  //from Animal;
 duck.feather()  // form Bird;
+console.log(duck.heart)// duck.heart is not accessible as heart is in animal constructor
+
 
 // we can also override a method from the Animal Prototype
 Birds.prototype.eat = function () {
@@ -117,8 +119,8 @@ a.prototype = { val : "previous"};
 var b = new a();
 a.prototype= { val : "new"};
 var c = new a();
-console.log(b.val  , b.__proto__);
-console.log(c.val, c.__proto__);
+console.log(b.val  , b.__proto__); //previous
+console.log(c.val, c.__proto__);  //new
 /*
 chaging value in prototype like this will only change it for the new instance,
 old instances will have the same old value.
@@ -126,11 +128,12 @@ old instances will have the same old value.
 
 
 function func() {
-    this.b = 1;
+    this.b = 1;  // b in constructor function
 }
-func.prototype.b = 2;
+func.prototype.b = 2; // b in prototype chain
+
 var fun = new func;
-console.log(fun.b);
+console.log(fun.b);  //1 
 /* 
 if val is present at both constructor and prototype chain,
 constructor one is given priority.
