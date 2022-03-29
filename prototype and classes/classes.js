@@ -71,9 +71,11 @@ console.log("-----------------Classes with Static-------------------");
 //static representaion in old js syntax, here xyz is only accessaable via 
 // static variables are being called by only static methods.
 function abc() { }
-abc.xyz = function () {
+abc.xyz = function () { // function xyz() is initalized on abc and is accessble via fucntion name abc like this abc.xyz()
     console.log("haha");
 }
+console.log(typeof abc) //function
+console.log(typeof  abc.xyz); //function
 console.dir(abc);
 
 //static properties are not passed to the intances of the class
