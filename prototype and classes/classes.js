@@ -117,6 +117,7 @@ class Privatetest {
 
     //private method
     #privateMethod() {
+       
         return "hello world";
     }
     
@@ -134,7 +135,7 @@ class subPrivate extends Privatetest{ // sub class also don't have access to par
     }
 }
 
-var objchild = new subPrivate(10);
+var objchild = new subPrivate(100);
 objchild.publicAcc()    // this method give reponse
     
     
