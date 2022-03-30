@@ -132,7 +132,7 @@ class Privatetest {
 class subPrivate extends Privatetest{ // sub class also don't have access to parnet class private metods and variables.
     #subPrivate
     constructor(val) {
-        super(val)
+        super(val) //super wont work for private variables in the parent constructor
         this.#subPrivate = 10
     }
 }
@@ -174,9 +174,9 @@ class privateStatic {
 }
 
 /* 
-satic private variables and methods are only accessible inside the class theya are created via classname, not in instances or sub class.
+satic private variables and methods are only accessible inside the class , not in instances or sub class.
 */ 
 
 var obj = new privateStatic;
 console.log(privateStatic.func()); //static funciton using class name to access private static
-console.log(obj.func2())
+console.log(obj.func2()) // public function of the class
