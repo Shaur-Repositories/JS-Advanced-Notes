@@ -1,5 +1,6 @@
 /*
-proxies in js is a way to wrap an object/ function and add a custum behaviour to it like reading, insertion or vaidation
+proxies in js is a way to wrap an object/ function and add a custom behaviour to it like reading, insertion or vaidation.
+Proxy act as a middleware between objects and operations happening on it.
 handler.get() --- for objects  --- The get() is fired when a property of the target object is accessed via the proxy object.
 handler.set() --- for objects ----  The set() controls behavior when a property of the target object is set.
 handler.apply() --- for functions  is for a function call.
@@ -17,7 +18,7 @@ console.log("-----------Proxies Get Handler Examples----------------");
 
 //get funciton as handler
 var getfun = {
-   get:function(obj, key , val){ //works like this or get(){} no other name will work
+   get:function(obj, key , val){ //works like this or get(){} 
         obj[key] ? console.log("true") : console.log("false");  // checks if key is present of not
         obj[key] = val; // will act as set
     }
