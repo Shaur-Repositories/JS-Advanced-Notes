@@ -6,8 +6,8 @@ function mul(a, b) {
 mul(2, 3)
 
 //curring using bind
-let a = mul.bind(this,2,3)
-a()
+let a = mul.bind(this,2)
+a(3)
 
 //curring using Closure
 let secMul = function (a) {
@@ -17,3 +17,6 @@ let secMul = function (a) {
 }
 let b = secMul(2)
 b(3)
+
+console.log(new Set([1, 1, 1]))
+Math.floor(4.6)

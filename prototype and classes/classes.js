@@ -82,7 +82,7 @@ console.dir(abc);
 class staticTest{
     static val = 10; // static variable goes in prototype chain
     static fun() {
-        console.log("val is ", this.val) // in static function we can access static variable using this. these are present on prototype chain and can only we acces by instances via prototype chain.
+        console.log("val is ", this.val) // in static function we can access static variable using this. these are present on prototype chain and can only be acces by instances via prototype chain.
     }
 }
 class staticChild extends staticTest{ }

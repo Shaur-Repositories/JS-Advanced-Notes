@@ -8,7 +8,7 @@ var mixin = function() {  // mixin method to be added
         console.log("Hi , I'm Mixin");
 }
     
-// var mixin = {
+// var mixin = {  //for fucntions and classes
 //     fly : function() {
 //     console.log("Hi , I'm Mixin");
 //     }
