@@ -21,7 +21,7 @@ console.log(10) //Uncaught ReferenceError: add is not defined
 */
 
 //simple try catch
-try {  // code which can have error
+try {  // code which can have error , if no catch the code will be terminated and the error will be uncaught
     let a = add(5, 10);
     console.log(a);
 } catch (e) { // e the error object if any are passed and the catch block is executed.
@@ -76,17 +76,19 @@ try {
 
 //Error is a cnonstructor Function.
 // WE can also extend Error class creates error
-class newError extends Error{
-    constructor(val) {
-          super(`"${val}" is not a valid number`); // message
-          this.name = "InvalidNumber"; // default "Error"
-    }
+class newError extends Error {
+  constructor(value) {
+    super(`"${value}" is not a valid number`);
+    this.name = "InvalidNumber"; //default Error
+  }
 }
 
 try {
-    throw new newError(a)
+    throw new newError("a")
 } catch(e) {
     console.log(e)
 }
+
+
 
 
