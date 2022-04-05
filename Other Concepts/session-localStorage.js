@@ -9,7 +9,7 @@ the data is stored in the form of key-value pair
 localstorage object is stored on the window object of the browser.
 */
 localStorage.clear()
-sessionStorage.clear()
+sessionStorage.clear() // has same functions as that of local storage.
 console.log("localStorage", localStorage);
 console.log("sessionStorage", sessionStorage);
 

@@ -21,7 +21,7 @@ console.log(
     }
     return value;
   })
-); // { one: '123', two: '123' } -- key not in " "
+); // { one: '1', two: '123' } -- key not in " "
 
 function replacer(key, value) {
   if (key === "one") {
