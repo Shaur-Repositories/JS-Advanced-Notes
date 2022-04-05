@@ -2,15 +2,34 @@
 
 Errors in js
 
-syntax Error
-Runtime Error
-Refrence Error
-Eval Error
-Internal Error
-Range Error
+Error Name          Description
+
+EvalError           An error in the eval() function has occurred.
+
+RangeError          Out of range number value has occurred.
+
+ReferenceError      An illegal reference has occurred.
+
+SyntaxError         A syntax error within code inside the eval() function has occurred.
+                    All other syntax errors are not caught by try/catch/finally, and will
+                    trigger the default browser error message associated with the error. 
+                    To catch actual syntax errors, you may use the onerror event.
+
+TypeError           An error in the expected variable type has occurred.
+
+URIError            An error when encoding or decoding the URI has occurred 
+                   (ie: when calling encodeURI()).
 
 Runtime errors are usually a category of exception that encompasses a variety of more specific error types such as logic errors , 
 IO errors , encoding errors , undefined object errors , division by zero errors , and many more
+
+
+
+The difference between 'throw new Error' and 'throw someObject' in javascript is that throw new Error wraps the error passed to it in the following format −
+{ name: 'Error', message: 'String you pass in the constructor' }
+The throw someObject will throw the object as is and will not allow any further code execution from the try block, ie same as throw new Error.
+
+
 
 */
 
