@@ -9,13 +9,41 @@
     <script src = "index.js" defer></script>
 </head>
 <body>
-    <h1>ABC</h1>
+    <h1>Event Bubbling</h1>
     <div id="grandparent">
         <div id="parent">
             <div id="child">
 
             </div>
         </div>
+    </div>
+
+    <h1>Event Capturing</h1>
+    <div id="grandparent1">
+        <div id="parent1">
+            <div id="child1">
+
+            </div>
+        </div>
+    </div>
+
+    <h1>Event Bubbling and Capturing with event Object</h1>
+    <div id="grandparente">
+        <div id="parente">
+            <div id="childe">
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <br><br>
+        <button id="once">I'm once</button>
+    </div>
+    <h1>Event Deligation</h1>
+    <div id="divofbtn">
+        <button id="btn1">Btn1</button>
+        <button id="btn2">Btn2</button>
+        <button id="btn3">Btn3</button>
     </div>
 
     <p class="test1">Paragraph Test1</p>
@@ -27,5 +55,13 @@
     </ul>
     <a id="link1"  href="http:\\google.com">google</a>
     <section class="a b c d"></section>
+
+
+    <button id="event">click Me</button>
+
+    <button id="clk" onClick="clk1()">Onclick Inline</button>
+
+    <button id="clkFun">click Me</button>
+
 </body>
 </html>
