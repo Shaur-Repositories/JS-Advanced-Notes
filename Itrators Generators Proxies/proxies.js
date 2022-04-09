@@ -25,7 +25,7 @@ var getfun = {
 }
 
 var proxy1 = new Proxy(testObj, getfun) // syntax for creating proxies  new Proxy(target obj/function , handler)
-// var proxy1 = new Proxy(testObj, {});// if handler part is left empty the proxy will work as the handler(i.e. object) itself
+// var proxy1 = new Proxy(testObj, {});// if handler part is left empty the proxy will work as the target(i.e. object) itself
 proxy1.key1
 // proxy1.key3 = 10; //get_set testing code.
 // console.log(testObj)// key3=10 will be added
@@ -54,7 +54,7 @@ function test(anObj) {
 }
 
 var handler = {
-    apply(fun, thisArg, param) { //thisArg is a part of syntax , fun is the "target function" and params is the "array of args pass in that function".
+    apply(fun, thisArg, param) { //thisArg is a part of syntax , fun is the "target function" and param is the "array of args pass in that function".
         console.log(fun(...param).toUpperCase()) // just make the returned value to uppercase.
     }
 };

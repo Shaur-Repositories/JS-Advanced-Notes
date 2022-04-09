@@ -3,7 +3,7 @@ Generators : It's a way of accessing functions as itrators. i.e. we can pause th
 */
 console.log("---------------Generator function Basics-------------")
 
-function* genertorFun() { // * denotes its a generator; can also be denoted as function *generateFun(){}
+function* genertorFun() { // * denotes it as a generator; can also be denoted as function *generateFun(){}
     var a = 1;
     console.log("1 yield");
     yield a;
