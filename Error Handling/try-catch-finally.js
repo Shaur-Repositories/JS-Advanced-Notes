@@ -25,18 +25,16 @@ IO errors , encoding errors , undefined object errors , division by zero errors 
 
 
 
+
 The difference between 'throw new Error' and 'throw someObject' in javascript is that throw new Error wraps the error passed to it in the following format −
 { name: 'Error', message: 'String you pass in the constructor' }
 The throw someObject will throw the object as is and will not allow any further code execution from the try block, ie same as throw new Error.
-
-
 
 */
 
 /*
 let a = add(5, 10)
 console.log(10) //Uncaught ReferenceError: add is not defined 
-
 */
 
 //simple try catch
@@ -84,7 +82,7 @@ Throw are used to pass user define exceptions.
 try {
     console.log("A")
     // throw "ABC"
-    throw new Error("name1" , "message1" , "stack1") // new Error part can be assigned to a variable and that variable can be thrown.
+    throw new Error("name1") // new Error part can be assigned to a variable and that variable can be thrown.
     console.log("C");
 } catch(e) { //e is optional
     console.log(e)
@@ -93,12 +91,12 @@ try {
     
 }
 
-//Error is a cnonstructor Function.
+//Error is a constructor Function.
 // WE can also extend Error class creates error
 class newError extends Error {
   constructor(value) {
     super(`"${value}" is not a valid number`);
-    this.name = "InvalidNumber"; //default Error
+    this.name = "InvalidNumber"; //default name is Error
   }
 }
 
