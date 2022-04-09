@@ -1,12 +1,12 @@
 console.log(document)
 console.dir(document)
 /*
-getElementsByClassName  give a live list  -- will update when something changes
-querySelectorAll gives static list -- will not update if some thing changes
+getElementsByClassName gives "HTML collection" which is "live list"  -- will update when something changes
+querySelectorAll gives "node list" which is "static list" -- will not update if some thing changes
 */
 let test1class = document.getElementsByClassName("test1");
 let test1query = document.querySelectorAll(".test1");
-let test1query1 = document.querySelector(".test1");
+let test1query1 = document.querySelector(".test1"); 
 
 console.log(test1class); // will give html collection --array like obj --for loop
 console.log(test1query); // will give node list --array like obj - for and forEach loop
@@ -24,7 +24,7 @@ console.log("inner text of 1st test1 :", test1query1.innerHTML);
 let link = document.getElementById("link1")
 console.log("link id :", link.getAttribute("href")) // href value
 link.setAttribute("href", "http:\\nolink.com");
-link.innerHTML = "nolink"
+link.innerHTML = "nolink" // in this case will work as innerText
 console.log("link id :", link.getAttribute("href")); 
 
 //nodes
@@ -33,15 +33,16 @@ console.log(doc.childNodes) // <! docType> at 0 and <html> at 1
 let htm = doc.childNodes[1]
 console.log(htm.parentNode) //parent of htm is document.
 console.log(htm.childNodes) //NodeList(3) [head, text, body]0: head1: text2: bodylength: 3[[Prototype]]: NodeList  ;;;; the "text" here is the white space in code
-
+//.nextSibling()
+//.nextElemetSibling()
 
 /*
 white space are not rendered on the web page coz of css property
 *{
     white-space : normal;
 }
-if you want white spacees change it to
 
+if you want white spaces change it to
 *{
     white-space : pre;
 }
@@ -80,6 +81,7 @@ console.dir(list1.children)
 let l2 = list1
 console.log(l2.children)
 
+//deep cloning
 l2 = list1.cloneNode(true)
 console.log(l2);
 
@@ -91,7 +93,7 @@ list1.before(p1) // p1 will be added before list1,
 list1.after(p1)
 console.log(htm.children[1].children)
 
-p1.remove() // removes the 1st p1 from the dom tree
+p1.remove() // removes the First p1 from the dom tree
 
 list1.insertAdjacentElement("beforeBegin", p1) // before
 console.log( "p1 added beforeBegin :",htm.children[1].children);
@@ -131,7 +133,7 @@ btn3.onclick = function () {
 // event bubbling
 
 
-console.log("Event Bubbling")
+console.log("Event Bubbling") // happens on those parents who has the same event as the event triggerd
 let garndparent = document.getElementById("grandparent")
 let parent = document.getElementById("parent");
 let child = document.getElementById("child");
@@ -153,9 +155,11 @@ function gpranetClick() {
 // click events
 
 // child.addEventListener("click", childClick()); // appending () after function name childClick() will call the function on file load; we dont want that behaviour
+
+
 child.addEventListener("click", childClick)  // if child is clicked , bubbling will occur and childClick and gparentClick will be called
 // coz of same event name.
-parent.addEventListener("mouseover", parentClick) // click on this wll bubble and gparentClick will trigger as its the next click triggered function.
+parent.addEventListener("mouseover", parentClick) // click on this will bubble and gparentClick will trigger as its the next click triggered function.
 // garndparent.addEventListener("click", gpranetClick) // commented this for below senario to work
 
 
@@ -180,11 +184,11 @@ if any parent in the chain dont have the same event , it will be skipped.
 
 /* commenting to make below code work.
 
-child1.addEventListener("click", childClick, true);  // here if we click on child capturing will occure on those above nodes
+child1.addEventListener("click", childClick, true);  // here if we click on child , capturing will occure on those above nodes
 // that have capturing enabled and have same event attached to it.
 parent1.addEventListener("mouseover", parentClick,true); // parent have differnt event attached
 garndparent1.addEventListener("click", gpranetClick, true);
-// so the click on child1 will trigger gparentClick and childClick skipping the parent as the event is different
+// so the click on child1 will trigger gparentClick and childClick , skipping the parent as the event is different
 */
 
 
@@ -234,22 +238,22 @@ garndparente.addEventListener("click", gpranetClicke, true);
 let once = document.getElementById("once");
 once.addEventListener("click", () => {
     alert("I can only be clicked once")
-}, {                    // this is another way in which we can add the 3rd parameter in addEventlistener to enable the captureing
+}, {                   // this is another way in which we can add the 3rd parameter in addEventlistener to enable the capturing
     capture: true,     // enable the captureing
-    once :true            //enable once  i.e. function can be cicked once
+    once :true         //enable once  i.e. function can be cicked once
 })
 
 console.log("event deligation")
 /*
-this basically is a combination of event bubbling and evet object to add events to only parent element and having multiple functionalitis depending on the child element 
+this basically is a combination of event bubbling and evet object to attach event lister to only parent element and having multiple functionalitis depending on the child element 
 i.e. e.target is clicked.
 */
 function btnclik(e) {
-  alert(e.target.textContent);
+  if (e.target !== this) alert(e.target.textContent);
 }
 let deligationDiv = document.getElementById("divofbtn");
 deligationDiv.addEventListener("click", btnclik) // clicking on any child inside this div will create bubbling and when encounter  this 
-// div it will trigger the btnclik function and output will be accourding to the child cliked.
+// div it will trigger the btnclik function and output will be according to the child cliked.
 
 
 
