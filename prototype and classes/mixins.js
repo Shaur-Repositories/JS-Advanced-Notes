@@ -26,8 +26,15 @@ test.abc = function () { //to add function only accesable to test like static.
   console.log("abc");
 }
 
+
+
+
 function mixinAdd(obj1 , func) {
     // obj1.mixin = func; // to add to objects and function(like static)
+  
+    /* 
+    The Object.assign() method copies all enumerable own properties from one or more source objects to a target object. It returns the modified target object.
+    */
     Object.assign(obj1.prototype, func) //to add/copyies to "classes and fuctions" prototype , also make sure that mixin is an object type as prototye is object
 }
 

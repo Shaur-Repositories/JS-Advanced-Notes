@@ -1,5 +1,6 @@
 /* 
 They are part of ES6 but are only a syntactical sugar. Under the hood it works as protoype chain.
+class follows "use-strict" inside them.
 classes are functions and hoisted in same way
 class can have 1 constructor function inside them.
 get and set keywords and fucntions, they also move in prototype of the class.
@@ -30,12 +31,16 @@ class Person {
 }
 
 var per1 = new Person("Jhon");
+
+
 console.log(per1.name = "david") // name val changed;
 per1.getName;
 per1.setName = "ABC"
 per1.simpleFunction(); // present in class Person prototype
 per1.arrowfunction();  // present on per1 instance
-console.dir(per1);
+console.log("child : ", per1);
+console.log("child type : ", typeof per1); //object
+console.log("child proto",per1.__proto__);
 
 
 /* 
@@ -67,9 +72,12 @@ var stu1 = new students("jhonny");
 stu1.greet();
 
 console.log("-----------------Classes with Static-------------------");
+/* 
+static variables can be used only by static methods. 
+public static members exits only on parent class but are accessed by child class via protoytpe chain.
+*/
 
-//static representaion in old js syntax, here xyz is only accessaable via 
-// static variables are being called by only static methods.
+//static representaion in old js syntax, here xyz is only accessaable via abc
 function abc() { }
 abc.xyz = function () { // function xyz() is initalized on abc and is accessble via fucntion name abc like this abc.xyz()
     console.log("haha");
@@ -78,16 +86,17 @@ console.log(typeof abc) //function
 console.log(typeof  abc.xyz); //function
 console.dir(abc);
 
-//static properties are not passed to the intances of the class
+//static properties are not passed to the intances of the class but are accessed by child class via protoytpe chain.
 class staticTest{
     static val = 10; // static variable goes in prototype chain
     static fun() {
-        console.log("val is ", this.val) // in static function we can access static variable using this. these are present on prototype chain and can only be acces by instances via prototype chain.
+        console.log("val is ", this.val) // in static function we can access static variable using "this", these are present on prototype chain 
+        //and can only be acces by instances via prototype chain.
     }
 }
 class staticChild extends staticTest{ }
 var objchild = new staticChild;
-console.log("form subclass", staticChild.val); // public static variables and methods are accesible from child class name too.
+console.log("form subclass", staticChild.val); // public static variables and methods are accesible from child class name too via protoype chain.
 
 
 
@@ -106,6 +115,9 @@ private variable denoted by #
 should be delacre before using
 should not be use outside the scope
 cant be removed using delte
+
+private variables are asscessible only inside the class methods
+private variables and methods dont go in protoype chian
 */
 
 class Privatetest {
@@ -128,6 +140,8 @@ class Privatetest {
     }
 
 }
+
+console.log("Private Class prototype : ",Privatetest.prototype)
 
 class subPrivate extends Privatetest{ // sub class also don't have access to parnet class private metods and variables.
     #subPrivate
@@ -159,7 +173,7 @@ class name is req in static fucntions to access it.
 class privateStatic {
     static #val;
 
-    static func() {
+    static func() {  //static public method
         privateStatic.#val = "val";
         return privateStatic.#val;
     }
@@ -174,9 +188,11 @@ class privateStatic {
 }
 
 /* 
-satic private variables and methods are only accessible inside the class , not in instances or sub class.
+satic private variables and methods are only accessible inside the class that too via class name, not in instances or sub class.
 */ 
 
 var obj = new privateStatic;
-console.log(privateStatic.func()); //static funciton using class name to access private static
+console.log(privateStatic.func()); // public static funciton using class name to access private static
 console.log(obj.func2()) // public function of the class
+// console.log(privateStatic.#val); // 
+// console.log(privateStatic.#privateStatic); // error

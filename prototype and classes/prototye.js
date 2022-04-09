@@ -84,20 +84,20 @@ function Birds(name) {
 }
 
 /*
-The Object.create() method creates a new object, using an existing object as the prototype of the newly created object, i.e. the __protp__ of newly
+The Object.create() method creates a new object, using an existing object, as the prototype of the newly created object, i.e. the __protp__ of newly
 created object will point to the prototye of existing object.
 */
 
 // console.log("Checking Brid prototype 1: ", Birds.prototype)
 
 
-Birds.prototype = Object.create(Animal.prototype) // all fucntions of animals are copied in Birds prototype.
+Birds.prototype = Object.create(Animal.prototype) // all fucntions of animals are copied in Birds prototype. 
 
 
 // console.log("Checking Brid prototype 2: ", Birds.prototype);
 
 
-Birds.prototype.constructor = Birds; // in the above step constructor value is overridden , hence changing it back.
+Birds.prototype.constructor = Birds; // in the above step constructor value is overridden to Animal, hence changing it back.
 Birds.prototype.feather = function () { // function on Birds prototype.
     console.log("feather count 2")
 };
