@@ -55,14 +55,17 @@ function Person(name) {
 }
 var Person1 = new Person("Name");
 
+console.log("Parent ", Person);
 console.log("Parent function __proto__", Person.__proto__);
-console.log("Parent function Prototype", Person.prototype);
+console.log("Parent function Prototype", Person.prototype); //prototye with constructor
+console.log("Child ",  Person1); // object with name key
 console.log("Child function __proto__", Person1.__proto__);
-console.log("Child function Prototype", Person1.prototype);
+console.log("Child function Prototype", Person1.prototype); // undefined
+console.log("Child type", typeof Person1); //object
 
 console.log("---------------Prototype Intermediate Example------------------");
 
-function Animal() { this.heart = 1; } // heart property given in consturctor function of animal
+function Animal() { this.heart = 1; } // heart property given in consturctor function of animal , it will go to object which will be created using new keyword.
 Animal.prototype = {  // to add multiple properties at once;
 
     constructor: Animal,  // its important as by reassigning the prototype removes the constructor value. and set it to Object
@@ -74,11 +77,26 @@ Animal.prototype = {  // to add multiple properties at once;
     }
 }
 
+console.log("Checking Animal prototype : ", Animal.prototype);
+
 function Birds(name) {
     this.name =name;
 }
 
+/*
+The Object.create() method creates a new object, using an existing object as the prototype of the newly created object, i.e. the __protp__ of newly
+created object will point to the prototye of existing object.
+*/
+
+// console.log("Checking Brid prototype 1: ", Birds.prototype)
+
+
 Birds.prototype = Object.create(Animal.prototype) // all fucntions of animals are copied in Birds prototype.
+
+
+// console.log("Checking Brid prototype 2: ", Birds.prototype);
+
+
 Birds.prototype.constructor = Birds; // in the above step constructor value is overridden , hence changing it back.
 Birds.prototype.feather = function () { // function on Birds prototype.
     console.log("feather count 2")
@@ -99,9 +117,9 @@ Birds.prototype.eat = function () {
 
 duck.eat() //  from birds.
 
-
+console.log(duck.constructor === Birds)//true
 console.log(duck.constructor === Animal)//  false coz we changed the Birds.prototype.constructor to birds
-console.log(Birds.prototype.constructor === Birds)//  false coz we changed the Birds.prototype.constructor to birds
+console.log(Birds.prototype.constructor === Birds)//  true coz we changed the Birds.prototype.constructor to birds
 console.log(Animal.prototype.isPrototypeOf(duck)) //true as inherites property from animal
 console.log(Birds.prototype.isPrototypeOf(duck)); // true as duck  inherites property from birds.
 console.log(duck instanceof Birds); // true
@@ -137,6 +155,7 @@ console.log(fun.b);  //1
 /* 
 if val is present at both constructor and prototype chain,
 constructor one is given priority.
+as fun.__proto__ which would have been used to look up chain to resolve the property, but here the property was already present in the local memory of fun.
 */
 
 
