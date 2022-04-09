@@ -29,37 +29,36 @@ function c() {
 
 
 async function asyn() {
-    // sequence executon
-    // let a1 = await a();
-    // console.log(a1);
-    // let b1 = await b();
-    // console.log(b1);
+  // sequence executon
+  // let a1 = await a();
+  // console.log(a1);
+  // let b1 = await b();
+  // console.log(b1);
 
-    // concurrent execution
-    // let a1 = a();
-    // let b1 = b();
-    // console.log(await a1);
-    // console.log(await b1);
+  // concurrent execution
+  // let a1 = a();
+  // let b1 = b();
+  // console.log(await a1);
+  // console.log(await b1);
 
-    //parallel execution - same as promise.all()
+  //parallel execution - same as promise.all()
 
 
-
-    try {
-        let a1 = await a()
-        let b1 = await b()
-        // let c1 = await c() // having reject block will go to catch as soon as it's encounter.
-        console.log(a1)
-        console.log(b1)
-        // console.log(c1)
-    }
-    catch(e) {
-        console.log("Hey, I'm a catch block")
-        console.log(e)
-    }
-    finally {
-        console.log("Final Block will happen at last.")
-    }
+  try {
+      let a1 = await a()
+      let b1 = await b()
+      // let c1 = await c() // having reject block will go to catch as soon as it's encounter.
+      console.log(a1)
+      console.log(b1)
+      // console.log(c1)
+  }
+  catch(e) {
+      console.log("Hey, I'm a catch block")
+      console.log(e)
+  }
+  finally {
+      console.log("Final Block will happen at last.")
+  }
 }
 
 asyn()

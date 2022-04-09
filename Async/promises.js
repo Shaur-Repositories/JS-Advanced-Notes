@@ -1,5 +1,5 @@
 /*
-
+Promises are used where we don't know how much time it will take to execute a particular code like fetcing from API.
 A promise may have one of three states.
 Pending
 Fulfilled
@@ -21,7 +21,7 @@ let promisePractice = new Promise((resolve, reject) => {
 console.log(promisePractice) // promise defination
 promisePractice.then(() => { // .then by default returns a promise.
     console.log("I am the 1st then")
-    return "abc" // returned value will be passed to next then.
+    return "abc" // returned value will be passed to next then, and "then" returns a promise so this value will be passed as "Promise.resolve('abc')".
 }).then((val) => {
     console.log(val) // will print abc
     console.log("I am the 2nd then");

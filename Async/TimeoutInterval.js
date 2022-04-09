@@ -26,5 +26,5 @@ console.log("------------setTimeout Interval Effect---------------");
 
 setTimeout(function run() {
     console.log("hello");
-    setTimeout(run, 5000)
+    setTimeout(run, 5000) //recurrsion and will work as setInterval
 }, 5000); // will work as setInterval

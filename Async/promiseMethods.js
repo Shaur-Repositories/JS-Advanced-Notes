@@ -12,7 +12,7 @@ promise methods such as .all , .race , race , .any , allSetteled
 function a() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve("function A says hello in 2 sec");
+      resolve("function A says hello in 1 sec");
     }, 1000);
   });
 }
@@ -20,8 +20,8 @@ function a() {
 function b() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve("function B says hello in 3 sec");
-    }, 3000);
+      resolve("function B says hello in 2 sec");
+    }, 2000);
   });
 }
 
@@ -35,14 +35,14 @@ function c() {
 
 
 // to do something after all promises are resolved successfully.
-// .all ...if any one of the promise fails it will give stop exectuing and gives and error...output is in same order as input
+// .all ...if any one of the promise fails it will stop exectuing and gives and error...output is in same order as input
 Promise.all([a(), b()]).then((values) => {
-  console.log(values);
+  console.log("from all :",values);
 });
 
-// // to do something after all promises are settled --- resolved or rejected.
-Promise.allSettled([a(), b() , c()]).then((values) => {
-  console.log(values);
+// // to do something after all promises are settled --- resolved or rejected, in same order as input
+Promise.allSettled([c(), b() , a()]).then((values) => {
+  console.log("from all Setteled :", values);
 });
 // 0: {status: 'fulfilled', value: 'function A says hello in 2 sec'}
 // 1: {status: 'fulfilled', value: 'function B says hello in 3 sec'}
@@ -51,11 +51,11 @@ Promise.allSettled([a(), b() , c()]).then((values) => {
 
 // return first promise , doest matter if its rejected or resolved.
 Promise.race([a(), b(), c()]).then((values) => {
-  console.log(values);
+  console.log("From Race : ",values);
 });
 
 
 // return first resolved promise , but if all rejects then reject promise is rejected.
 Promise.any([a(), b(), c()]).then((values) => {
-  console.log(values);
+  console.log("from any:",values);
 });
