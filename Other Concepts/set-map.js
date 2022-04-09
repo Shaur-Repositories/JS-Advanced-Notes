@@ -42,7 +42,7 @@ console.log(map1)
 map1.set("a", "abc")
 console.log(map1);
 map1.set("a", "abc");
-map1.set("a", "abc"); //replaces the previous val
+map1.set("a", "abcd"); //replaces the previous val
 console.log(map1);
 map1.set("b", "abc");
 map1.set("c", "abc");

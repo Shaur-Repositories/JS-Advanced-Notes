@@ -1,6 +1,6 @@
 /*
 
-for..of loops : cant be used with objects , is used to itrate over elements of array set string (not index)
+for..of loops : can't be used with objects , is used to itrate over elements of array set string (not index)
 for..in loops : used to itrate over keys of objects or index of of arr / string.
 */
 

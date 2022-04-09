@@ -147,6 +147,7 @@ function parentClick() {
 
 function gpranetClick() {
   console.log("grandparent clicked");
+  
 }
 
 // click events
