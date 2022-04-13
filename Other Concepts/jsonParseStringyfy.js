@@ -25,7 +25,7 @@ console.log(
 
 function replacer(key, value) {
   if (key === "one") {
-    return undefined;
+    return undefined;//can be used to filter /remove values
   }
   return value;
 }

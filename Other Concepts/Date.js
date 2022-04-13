@@ -15,7 +15,7 @@ console.log(Date.now()) // miliseconds passed from 1-jan-1970
 
 //AutoCorrection in Date Object
 //When you assign out of range values in the Date object, it auto-corrects itself. For example,
-const date = new Date(2008, 0, 33);
+const date = new Date(2008, 0, 33);//0 is january month 1
 // Jan does not have 33 days
 console.log(date); // Sat Feb 02 2008
 

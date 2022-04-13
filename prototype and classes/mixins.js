@@ -4,6 +4,10 @@ for classes  - a mixin is a class containing methods that can be used by other c
 mixin provides methods that implement a certain behavior, but we do not use it alone, we use it to add the behavior to other classes.
 */
 
+
+
+
+
 // var mixin = function() {  // mixin method to be added on object
 //         console.log("Hi , I'm Mixin");
 // }

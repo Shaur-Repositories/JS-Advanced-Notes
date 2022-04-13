@@ -26,7 +26,7 @@ function gudThrottle(fun, delay) {
     let flag = true;
     return () => {
         if (flag === true) {
-            networkCall();
+            fun();
             flag = false;
             setTimeout(() => {
                 flag = true;

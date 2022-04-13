@@ -15,7 +15,7 @@ console.log(test1query1); // will give 1 element of class test1
 test1query1.style.color = "white";
 test1query1.style.fontSize = "100px" //camel case for css properties
 
-test1query1.textContent = "white"; // replaces the text; will show whole text (hidden and visible)
+test1query1.textContent = "white"; // replaces the text; will show both text (hidden and visible)
 console.log("text Context of 1st test1 :",test1query1.textContent);
 test1query1.innerText = "white Visible"; // replaces the text; will show only visible text
 console.log("inner text of 1st test1 :", test1query1.innerHTML);
