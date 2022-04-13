@@ -114,7 +114,7 @@ console.log("-----------------Classes with Private-------------------");
 private variable denoted by #
 should be delacre before using
 should not be use outside the scope
-cant be removed using delte
+cant be removed using delete
 
 private variables are asscessible only inside the class methods
 private variables and methods dont go in protoype chian
@@ -167,7 +167,7 @@ console.log("-----------------Classes with Static Private-------------------");
 /* 
 they have the same limitaiton as the pulic static one,
 but here the static funtions cant acess the static variable using 'this'.
-class name is req in static fucntions to access it.
+class name is req in static fucntions to access it, because 'this' refers to the child(if we extneds it) class (not the Base class) and so causes a TypeError.
 */
 
 class privateStatic {
@@ -183,7 +183,8 @@ class privateStatic {
     }
 
     func2() {
-        return `${privateStatic.func()} ${privateStatic.#privateStatic()}` ; // normal public function used
+        return `${privateStatic.func()} ${privateStatic.#privateStatic()}`; // normal public function used with className to call it...coz
+        // it wont cause any issue when called in object or subclass.
     }
 }
 
